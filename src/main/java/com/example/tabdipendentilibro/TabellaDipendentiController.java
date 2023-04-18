@@ -25,11 +25,13 @@ public class TabellaDipendentiController {
     @FXML private TableColumn<Dipendente, String> colonnaNome;
     @FXML private TableColumn<Dipendente, String> colonnaCognome;
     @FXML private TableColumn<Dipendente, String> colonnaCodiceFiscale;
+    @FXML private TableColumn<Dipendente, String> colonnaEtà;
 
     /* Riferimenti FXML form aggiunta dipendente */
     @FXML private TextField campoNome;
     @FXML private TextField campoCognome;
     @FXML private TextField campoCodiceFiscale;
+    @FXML private TextField campoEtà;
 
     @FXML
     private void initialize() {
@@ -38,6 +40,7 @@ public class TabellaDipendentiController {
         colonnaNome.setCellValueFactory(new PropertyValueFactory<Dipendente, String>("nome"));
         colonnaCognome.setCellValueFactory(new PropertyValueFactory<Dipendente, String>("cognome"));
         colonnaCodiceFiscale.setCellValueFactory(new PropertyValueFactory<Dipendente, String>("codiceFiscale"));
+        colonnaEtà.setCellValueFactory(new PropertyValueFactory<Dipendente, String>("età"));
     }
 
     /* Event handler aggiunta dipendente */
@@ -45,15 +48,17 @@ public class TabellaDipendentiController {
         String nome = campoNome.textProperty().get();
         String cognome = campoCognome.textProperty().get();
         String codiceFiscale = campoCodiceFiscale.textProperty().get();
-        if (validaForm(nome, cognome, codiceFiscale)) {
+        String età = campoEtà.textProperty().get();
+        if (validaForm(nome, cognome, codiceFiscale, età)) {
             Random random = new Random(new Date().getTime());
             int idNuovoDipendente = random.nextInt();
-            Dipendente dip = new Dipendente(idNuovoDipendente, nome, cognome, codiceFiscale);
+            Dipendente dip = new Dipendente(idNuovoDipendente, nome, cognome, codiceFiscale, età);
             GestionaleDipendenti.aggiungiDipendente(dip);
             setMessaggioValidazione("Nuovo dipendente aggiunto!");
             campoNome.clear();
             campoCognome.clear();
             campoCodiceFiscale.clear();
+            campoEtà.clear();
         }
     }
 
@@ -69,7 +74,7 @@ public class TabellaDipendentiController {
         GestionaleDipendenti.rimuoviDipendente(dipendenteSelezionato);
     }
 
-    private boolean validaForm(String nome, String cognome, String codiceFiscale) {
+    private boolean validaForm(String nome, String cognome, String codiceFiscale, String età) {
         boolean valido = true;
         String msg = "";
         if (nome == null || nome.isEmpty()) {
@@ -82,6 +87,10 @@ public class TabellaDipendentiController {
         }
         if (codiceFiscale == null || codiceFiscale.isEmpty()) {
             msg += "Inserisci codice fiscale\n";
+            valido = false;
+        }
+        if (età == null || età.isEmpty()) {
+            msg += "Inserisci età\n";
             valido = false;
         }
         setMessaggioValidazione(msg);

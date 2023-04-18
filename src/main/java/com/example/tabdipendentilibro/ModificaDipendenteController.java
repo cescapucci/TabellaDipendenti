@@ -20,6 +20,7 @@ public class ModificaDipendenteController {
     @FXML private TextField campoNome;
     @FXML private TextField campoCognome;
     @FXML private TextField campoCodiceFiscale;
+    @FXML private TextField campoEtà;
 
     @FXML
     public void start() {
@@ -31,17 +32,19 @@ public class ModificaDipendenteController {
         String nome = campoNome.textProperty().get();
         String cognome = campoCognome.textProperty().get();
         String codiceFiscale = campoCodiceFiscale.textProperty().get();
-        if (validaForm(nome, cognome, codiceFiscale)) {
+        String età = campoEtà.textProperty().get();
+        if (validaForm(nome, cognome, codiceFiscale, età)) {
             dipendente.setNome(nome);
             dipendente.setCognome(cognome);
             dipendente.setCodiceFiscale(codiceFiscale);
+            dipendente.setEtà(età);
             GestionaleDipendenti.modificaDipendente(dipendente);
             setMessaggioValidazione("Modifiche salvate con successo");
         }
     }
 
 
-    private boolean validaForm(String nome, String cognome, String codiceFiscale) {
+    private boolean validaForm(String nome, String cognome, String codiceFiscale, String età) {
         boolean valido = true;
         String msg = "";
         if (nome == null || nome.isEmpty()) {
@@ -56,6 +59,10 @@ public class ModificaDipendenteController {
             msg += "Inserisci codice fiscale\n";
             valido = false;
         }
+        if (età == null || età.isEmpty()) {
+            msg += "Inserisci età\n";
+            valido = false;
+        }
         setMessaggioValidazione(msg);
         return valido;
     }
@@ -67,6 +74,7 @@ public class ModificaDipendenteController {
         campoNome.textProperty().setValue(dipendente.getNome());
         campoCognome.textProperty().set(dipendente.getCognome());
         campoCodiceFiscale.textProperty().set(dipendente.getCodiceFiscale());
+        campoEtà.textProperty().set(dipendente.getEtà());
     }
 
     public String getMessaggioValidazione() {

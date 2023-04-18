@@ -36,6 +36,7 @@
                         <TableColumn fx:id="colonnaNome" text="Nome"/>
                         <TableColumn fx:id="colonnaCognome" text="Cognome"/>
                         <TableColumn fx:id="colonnaCodiceFiscale" text="Codice Fiscale"/>
+                        <TableColumn fx:id="colonnaEtà" text="Età"/>
                     </columns>
                 </TableView>
 
@@ -49,11 +50,13 @@
                         <ColumnConstraints hgrow="ALWAYS"/>
                         <ColumnConstraints hgrow="ALWAYS"/>
                         <ColumnConstraints hgrow="ALWAYS"/>
+                        <ColumnConstraints hgrow="ALWAYS"/>
                     </columnConstraints>
                     <children>
                         <TextField fx:id="campoNome" GridPane.columnIndex="0"/>
                         <TextField fx:id="campoCognome" GridPane.columnIndex="1"/>
                         <TextField fx:id="campoCodiceFiscale" GridPane.columnIndex="2"/>
+                        <TextField fx:id="campoEtà" GridPane.columnIndex="3"/>
                     </children>
                 </GridPane>
                 <Button onMouseClicked="#handleNuovoDipendente" text="Aggiungi nuovo dipendente"/>

@@ -29,10 +29,10 @@ public class GestionaleDipendenti extends Application {
     public GestionaleDipendenti(){
         // dati per testing
         Random random = new Random(new Date().getTime());
-        dipendenti.add(new Dipendente(random.nextInt(), "Donald", "Duck", "DNDCK123456789"));
-        dipendenti.add(new Dipendente(random.nextInt(), "Mickey", "Mouse", "MKMS123456789"));
-        dipendenti.add(new Dipendente(random.nextInt(), "Uncle", "Scrooge", "NCLSC123456789"));
-        dipendenti.add(new Dipendente(random.nextInt(), "Gyro", "Gearloose", "GRGRS123456789"));
+        dipendenti.add(new Dipendente(random.nextInt(), "Donald", "Duck", "DNDCK123456789","1"));
+        dipendenti.add(new Dipendente(random.nextInt(), "Mickey", "Mouse", "MKMS123456789","2"));
+        dipendenti.add(new Dipendente(random.nextInt(), "Uncle", "Scrooge", "NCLSC123456789","3"));
+        dipendenti.add(new Dipendente(random.nextInt(), "Gyro", "Gearloose", "GRGRS123456789","3"));
     }
 
     @Override
@@ -44,7 +44,8 @@ public class GestionaleDipendenti extends Application {
 
         // Preparazione stage popup per modifica dipendente
         popupStage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("modificaDipendente.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("modificaDipendente.fxml" +
+                ""));
         Parent popupRoot = fxmlLoader.load();
         popupController = fxmlLoader.getController(); // salva riferimento a controller del popup
         popupStage.setScene(new Scene(popupRoot));

@@ -21,6 +21,8 @@
                 <TextField fx:id="campoCognome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label text="Codice Fiscale:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <TextField fx:id="campoCodiceFiscale" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="età:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <TextField fx:id="campoEtà" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
         </GridPane>
 

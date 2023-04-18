@@ -12,13 +12,15 @@ public class Dipendente {
     private final StringProperty nome;
     private final StringProperty cognome;
     private final StringProperty codiceFiscale;
+    private final StringProperty età;
 
     /* Costruttori */
-    public Dipendente(int id, String nome, String cognome, String codiceFiscale) {
+    public Dipendente(int id, String nome, String cognome, String codiceFiscale, String età) {
         this.id = id;
         this.nome = new SimpleStringProperty(nome);
         this.cognome = new SimpleStringProperty(cognome);
         this.codiceFiscale = new SimpleStringProperty(codiceFiscale);
+        this.età = new SimpleStringProperty(età);
     }
 
     public Dipendente(Dipendente dipendente) {
@@ -26,6 +28,7 @@ public class Dipendente {
         this.nome = dipendente.nomeProperty();
         this.cognome = dipendente.cognomeProperty();
         this.codiceFiscale = dipendente.codiceFiscaleProperty();
+        this.età = dipendente.etàProperty();
     }
 
     /* Getters e setters*/
@@ -63,7 +66,19 @@ public class Dipendente {
     public void setCodiceFiscale(String codiceFiscale) {
         this.codiceFiscale.set(codiceFiscale);
     }
-    
+
+    public String getEtà() {
+        return età.get();
+    }
+
+    public StringProperty etàProperty() {
+        return età;
+    }
+
+    public void setEtà(String età) {
+        this.età.set(età);
+    }
+
     @Override
     public boolean equals(Object altro) {
         if (altro == null) return false;
